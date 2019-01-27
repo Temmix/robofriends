@@ -40,21 +40,22 @@ class App extends Component {
         const { robots, searchField, onSearchChange, isPending } = this.props;
         const filteredRobots = robots
             .filter(x => x.name.toLowerCase().includes(searchField.toLowerCase()))
-        if(isPending){
-            return (<h1>Loading ...</h1>)
-        } else {
+        
             return (
                 <div className='tc'>
                     <h1 className='f1'>RoboFriends</h1>
-                    <SearchBox searchChanged={onSearchChange}/>
+                    <SearchBox searchChanged={onSearchChange} />
                     <Scroll>
-                        <ErrorBoundry>
-                            <CardList robots={filteredRobots}/>
-                        </ErrorBoundry>
+                        { isPending 
+                            ?  <h1>Loading ...</h1> 
+                            :  <ErrorBoundry>
+                                    <CardList robots={filteredRobots}/>
+                                </ErrorBoundry>
+                        }
                     </Scroll>
                 </div> 
             )
-        }
+        
     }
 }
 

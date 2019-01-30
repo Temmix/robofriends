@@ -2,12 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { setSearchField, requestRobots } from '../actions';
 
-import CardList from '../components/card/CardList';
-import SearchBox from '../components/searchBox/SearchBox';
-import Scroll from '../components/scroll/Scroll';
-import ErrorBoundry from '../components/errorBoundry/ErrorBoundry';
-// import {robots} from '../src/services/robots';
-import './App.css'
+import MainPage from '../components/mainPage/MainPage';
 
 const mapStateToProps = (state) => {
     return {
@@ -27,35 +22,9 @@ const mapStateToProps = (state) => {
   }
 
 class App extends Component { 
-    componentDidMount(){
-        this.props.onRequestRobots();
-    }
 
-    // Note for custom methods,use arrow function
-    //onSearchChanged = (event) => {
-       // this.setState({searchfield: event.target.value});
-   // }
-
-    render() {
-        const { robots, searchField, onSearchChange, isPending } = this.props;
-        const filteredRobots = robots
-            .filter(x => x.name.toLowerCase().includes(searchField.toLowerCase()))
-        
-            return (
-                <div className='tc'>
-                    <h1 className='f1'>RoboFriends</h1>
-                    <SearchBox searchChanged={onSearchChange} />
-                    <Scroll>
-                        { isPending 
-                            ?  <h1>Loading ...</h1> 
-                            :  <ErrorBoundry>
-                                    <CardList robots={filteredRobots}/>
-                                </ErrorBoundry>
-                        }
-                    </Scroll>
-                </div> 
-            )
-        
+    render() { 
+        return  <MainPage {...this.props}/> 
     }
 }
 

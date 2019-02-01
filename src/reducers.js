@@ -20,7 +20,7 @@ import {
   
   const initialStateRobots = {
     robots: [],
-    isPending: true
+    isPending: false
   }
   
   export const requestRobots = (state=initialStateRobots, action={}) => {
@@ -30,7 +30,7 @@ import {
       case REQUEST_ROBOTS_SUCCESS:
         return Object.assign({}, state, {robots: action.payload, isPending: false})
       case REQUEST_ROBOTS_FAILED:
-        return Object.assign({}, state, {error: action.payload})
+        return Object.assign({}, state, {error: action.payload, isPending: false})
       default:
         return state
     }

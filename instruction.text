@@ -1,0 +1,36 @@
+#create a react app with a boiler template, use the syntax  below on the terminal
+sudo npm install -g create-react-app
+
+#create the app like this.
+create-react-app robofriends
+
+#install css library like bootstrap
+npm install tachyons
+
+// adding redux to the app
+npm install redux
+npm install react-redux
+npm install redux-thunk
+npm install redux-logger
+
+// to deploy react app on github
+npm install gh-pages
+
+// add the following to the application.json
+ "predeploy": "npm run build",
+ "deploy": "gh-pages -d build",
+
+ // run to deploy
+ npm run deploy
+
+ // to test, jest is included in the create-react-app, let install enzyme
+ npm i --save-dev enzyme enzyme-adapter-react-16
+
+ // to get test coverage on the terminal
+ npm test -- --coverage
+
+ // for mocking store
+ npm install --save-dev redux-mock-store
+
+ // for testing api calls
+ npm install --save-dev nock
